@@ -15,26 +15,16 @@ import java.util.function.DoubleSupplier;
 /**
  * An example command that uses an example subsystem.
  */
-public class Drive extends CommandBase {
+public class DriveForward extends CommandBase {
   private final DriveTrain m_drivetrain;
-  private final DoubleSupplier m_left;
-  private final DoubleSupplier m_right;
-  private final DoubleSupplier m_elevatorDown;
-  private final DoubleSupplier m_elevatorUp;
-  private final double m_elevator;
 
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public Drive(DoubleSupplier left, DoubleSupplier right, DoubleSupplier elevatorDown, DoubleSupplier elevatorUp, DriveTrain drivetrain) {
+  public DriveForward(DriveTrain drivetrain) {
     m_drivetrain = drivetrain;
-    m_left = left;
-    m_right = right;
-    m_elevatorDown = elevatorDown;
-    m_elevatorUp = elevatorUp;
-    m_elevator = elevatorUp.getAsDouble() - elevatorDown.getAsDouble();
     addRequirements(drivetrain);
   }
 
@@ -46,11 +36,7 @@ public class Drive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_drivetrain.drive(m_left.getAsDouble(), m_right.getAsDouble());
-    // m_drivetrain.drive(m_left.getAsDouble(), m_elevator);
-
-    double elevatorSpeedCap = 0.5;
-    m_drivetrain.elevator((m_elevatorUp.getAsDouble() - m_elevatorDown.getAsDouble()) * elevatorSpeedCap);
+    m_drivetrain.drive(.25, .25);
     //m_drivetrain.drive(1, 0);
   }
 
