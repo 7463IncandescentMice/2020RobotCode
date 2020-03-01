@@ -49,7 +49,7 @@ public class Drive extends CommandBase {
     m_drivetrain.drive(m_left.getAsDouble(), m_right.getAsDouble());
     // m_drivetrain.drive(m_left.getAsDouble(), m_elevator);
 
-    double elevatorSpeedCap = 0.5;
+    double elevatorSpeedCap = 1;
     m_drivetrain.elevator((m_elevatorUp.getAsDouble() - m_elevatorDown.getAsDouble()) * elevatorSpeedCap);
     //m_drivetrain.drive(1, 0);
   }

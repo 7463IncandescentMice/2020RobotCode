@@ -22,7 +22,7 @@ public final class Constants {
     public static int rightBackmotor = 4;
 
     public static int leftYStick = 1;
-    public static int leftXStick = 0;
+    public static int rightXStick = 4;
     public static int leftTrigger = 2;
     public static int rightTrigger = 3;
 }

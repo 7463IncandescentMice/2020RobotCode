@@ -39,7 +39,7 @@ public class RobotContainer {
    */
   public RobotContainer() {
     m_drivetrain.setDefaultCommand(new Drive(() -> m_joystick.getRawAxis(Constants.leftYStick),
-        () -> m_joystick.getRawAxis(Constants.leftXStick), () -> m_joystick.getRawAxis(Constants.leftTrigger), () -> m_joystick.getRawAxis(Constants.rightTrigger), m_drivetrain));
+        () -> m_joystick.getRawAxis(Constants.rightXStick), () -> m_joystick.getRawAxis(Constants.leftTrigger), () -> m_joystick.getRawAxis(Constants.rightTrigger), m_drivetrain));
     // m_drivetrain.setDefaultCommand(new PIDDrive(m_drivetrain));
 
     // Configure the button bindings
