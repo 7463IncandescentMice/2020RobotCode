@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 
 import java.util.function.DoubleSupplier;
 
@@ -22,6 +23,8 @@ public class Drive extends CommandBase {
   private final DoubleSupplier m_elevatorDown;
   private final DoubleSupplier m_elevatorUp;
   private final double m_elevator;
+
+  private double lastSpeed = 0;
 
   /**
    * Creates a new ExampleCommand.
@@ -46,7 +49,18 @@ public class Drive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_drivetrain.drive(m_left.getAsDouble(), m_right.getAsDouble());
+    double thisSpeed = m_left.getAsDouble();
+
+    if (Math.abs(thisSpeed - lastSpeed) > Constants.speedRate) {
+      if (thisSpeed > lastSpeed) {
+        lastSpeed += Constants.speedRate;
+      } else {
+        lastSpeed -= Constants.speedRate;
+      }
+      m_drivetrain.drive(lastSpeed, m_right.getAsDouble());
+    } else {
+      m_drivetrain.drive(thisSpeed, m_right.getAsDouble());
+    }
     // m_drivetrain.drive(m_left.getAsDouble(), m_elevator);
 
     double elevatorSpeedCap = 1;

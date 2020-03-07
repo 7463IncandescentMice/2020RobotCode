@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.commands.Drive;
+import frc.robot.commands.DriveForward;
 import frc.robot.commands.PIDDrive;
 
 /**
@@ -30,7 +31,7 @@ public class RobotContainer {
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final DriveTrain m_drivetrain = new DriveTrain();
 
-  private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+  private final DriveForward m_autoCommand = new DriveForward(m_drivetrain);
 
   private final Joystick m_joystick = new Joystick(0);
 

@@ -7,16 +7,16 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-
-import java.util.function.DoubleSupplier;
+import frc.robot.subsystems.DriveTrain;
+import edu.wpi.first.wpilibj.Timer;
 
 /**
  * An example command that uses an example subsystem.
  */
 public class DriveForward extends CommandBase {
   private final DriveTrain m_drivetrain;
+  private final Timer m_time = new Timer();
 
   /**
    * Creates a new ExampleCommand.
@@ -32,12 +32,18 @@ public class DriveForward extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    m_time.reset();
+    m_time.start();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_drivetrain.drive(.25, .25);
+    if (m_time.get() < 2) {
+      m_drivetrain.drive(.75, 0);
+    } else {
+      m_drivetrain.drive(0, 0);
+    }
     //m_drivetrain.drive(1, 0);
   }
 

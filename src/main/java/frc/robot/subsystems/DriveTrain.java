@@ -73,7 +73,7 @@ public class DriveTrain extends SubsystemBase {
 
         diffDrive = new DifferentialDrive(m_left, m_right);
         diffDrive.setDeadband(.05);
-        diffDrive.setMaxOutput(.7);
+        diffDrive.setMaxOutput(Constants.speedCap);
     }
 
     public void PIDdrive(double leftDistance, double rightDistance) {

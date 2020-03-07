@@ -25,4 +25,7 @@ public final class Constants {
     public static int rightXStick = 4;
     public static int leftTrigger = 2;
     public static int rightTrigger = 3;
+
+    public static double speedRate = .05; 
+    public static double speedCap = .7;
 }
