@@ -51,16 +51,17 @@ public class Drive extends CommandBase {
   public void execute() {
     double thisSpeed = m_left.getAsDouble();
 
-    if (Math.abs(thisSpeed - lastSpeed) > Constants.speedRate) {
-      if (thisSpeed > lastSpeed) {
-        lastSpeed += Constants.speedRate;
-      } else {
-        lastSpeed -= Constants.speedRate;
-      }
-      m_drivetrain.drive(lastSpeed, m_right.getAsDouble());
-    } else {
-      m_drivetrain.drive(thisSpeed, m_right.getAsDouble());
-    }
+    // if (Math.abs(thisSpeed - lastSpeed) > Constants.speedRate) {
+    //   if (thisSpeed > lastSpeed) {
+    //     lastSpeed += Constants.speedRate;
+    //   } else {
+    //     lastSpeed -= Constants.speedRate;
+    //   }
+    //   m_drivetrain.drive(lastSpeed, m_right.getAsDouble());
+    // } else {
+    //   m_drivetrain.drive(thisSpeed, m_right.getAsDouble());
+    // }
+    m_drivetrain.drive(thisSpeed, m_right.getAsDouble());
     // m_drivetrain.drive(m_left.getAsDouble(), m_elevator);
 
     double elevatorSpeedCap = 1;
